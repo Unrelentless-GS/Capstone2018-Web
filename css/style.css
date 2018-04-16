@@ -1,0 +1,85 @@
+.section {
+	border: 1px solid #000000;
+}
+
+.ion-arrow-up-a {
+	content: '\f10c';
+	font-family: 'Ionicons';
+}
+
+.container{
+	width: 100%;
+	height: 100%
+}
+
+.current-music {
+	position: fixed;
+	bottom: 0;
+	height: 10vh;
+}
+
+.current-row {
+	margin-top: 1%;
+}
+
+.vote-playlist {
+	font-size: 18px;
+	width: 95%;
+	margin: 50px;
+}
+
+.upvote, .downvote, .voteCount {
+	text-align: center;
+}
+
+.artwork {
+	text-align: right;
+}
+
+svg.svg-inline--fa.fa-music.fa-w-16 {
+	height: 35px;
+	width: 35px;
+}
+
+.upvote, .downvote {
+	color: #000;
+}
+
+.main-section {
+	height: 90vh;
+}
+
+.playlist-content {
+	height: 100%;
+}
+
+.search-row {
+	height: 5%;
+}
+
+.content-row {
+	height: 95%
+}
+
+.list {
+	height: 100%;
+}
+
+.main-row {
+	height: 100%;
+}
+
+.searchbar {
+	height: 100%;
+}
+
+.total-progress-bar {
+	height: 10px;
+	background-color: orange;
+}
+
+.music-progress {
+	height: 100%;
+	width: 45%;
+	color: green;
+}
