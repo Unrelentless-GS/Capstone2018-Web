@@ -81,6 +81,11 @@ html, body {
 	display: block;
 }
 
+.content-header {
+	padding-left: 50px;
+	margin-bottom: 0;
+}
+
 .section-invisible {
 	display: none;
 }
@@ -142,7 +147,7 @@ svg.svg-inline--fa.fa-music.fa-w-16 {
 
 .playlist-content {
 	height: 100%;
-	margin-bottom: 50px;
+	margin-bottom: 100px;
 }
 
 .search-row {
