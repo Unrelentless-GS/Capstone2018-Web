@@ -1,12 +1,12 @@
 $(document).ready(function() {
     jQuery('.upvote').each(function(index, element){
         jQuery(element).on('click', function(){
-            if(jQuery(element).css('color') == 'rgb(0, 0, 0)'){ 
+            if(jQuery(element).css('color') == 'rgb(255, 255, 255)'){ 
                 jQuery(element).css('color', '#1db954');
-                jQuery(element).siblings('.downvote').css('color', '#000');
+                jQuery(element).siblings('.downvote').css('color', '#fff');
                 jQuery(element).siblings('.voteCount').stepUp(1);
             }else {
-                jQuery(element).css('color', '#000');
+                jQuery(element).css('color', '#fff');
             }
         })
     })
@@ -15,11 +15,11 @@ $(document).ready(function() {
 $(document).ready(function() {
     jQuery('.downvote').each(function(index, element){
         jQuery(element).on('click', function(){
-            if(jQuery(element).css('color') == 'rgb(0, 0, 0)'){ 
+            if(jQuery(element).css('color') == 'rgb(255, 255, 255)'){ 
                 jQuery(element).css('color', '#f44b42');
-                jQuery(element).siblings('.upvote').css('color', '#000');
+                jQuery(element).siblings('.upvote').css('color', '#fff');
             } else {
-                jQuery(element).css('color', '#000');
+                jQuery(element).css('color', '#fff');
             }
         })
     })
