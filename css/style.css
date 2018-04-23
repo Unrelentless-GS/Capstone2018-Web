@@ -71,6 +71,12 @@ body {
 	font-family: 'Circular Std Book';
 }
 
+html, body {
+	margin: 0; 
+	height: 100%; 
+	overflow: hidden
+}
+
 .section-visible {
 	display: block;
 }
@@ -136,6 +142,7 @@ svg.svg-inline--fa.fa-music.fa-w-16 {
 
 .playlist-content {
 	height: 100%;
+	margin-bottom: 50px;
 }
 
 .search-row {
@@ -234,6 +241,18 @@ ul {
 }
 
 .playlist-selector {
+	display: none;
+}
+
+.album-selector {
+	display: none;
+}
+
+.artist-selector {
+	display: none;
+}
+
+.song-selector {
 	display: none;
 }
 .main-content {
