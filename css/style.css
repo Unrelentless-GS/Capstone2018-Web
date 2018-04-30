@@ -111,7 +111,7 @@ html, body {
 }
 
 .current-row {
-	margin-top: 1%;
+	margin-bottom: 1%;
 }
 
 .choice-list {
@@ -181,15 +181,25 @@ svg.svg-inline--fa.fa-music.fa-w-16 {
 	color: green;
 }
 
+.form-control:focus {
+	border-color: #66afe9; */
+    outline: 0;
+    -webkit-box-shadow: none; 
+    box-shadow: none; 
+}
+
 .form-control {
 	width: 100%;
+	height: 100%;
 	background-color: transparent;
 	color: #fff;
 	border: none;
+	font-size: 30px;
 }
 
 .input-group.add-on {
 	width: 100%;
+	height: 100%;
 }
 
 .input-group-btn {
@@ -203,63 +213,21 @@ svg.svg-inline--fa.fa-music.fa-w-16 {
 }
 
 .form-control::placeholder {
-    color: #fff;
+    color: #999;
 }
 
 .navbar-form {
-	margin-top: 30px;
+	height: 100%
 }
 
 .logo {
 	width: 100%;
 }
 
-.media-category {
-	margin-top: 20%;
-}
-
-.party-list {
-    margin-bottom: 50px;
-    cursor: pointer;
-}
-
-.category-list li {
-	font-size: 30px;
-	border-bottom: 2px solid #fff;
-	cursor: pointer;
-}
-
-.category-list a {
-	color: #fff;
-}
-
-.category-list a:hover {
-	text-decoration: none;
-}
-
-ul {
-  list-style-type: none;
-}
-
 .logo-row {
 	margin-top: 10px;
 }
 
-.playlist-selector {
-	display: none;
-}
-
-.album-selector {
-	display: none;
-}
-
-.artist-selector {
-	display: none;
-}
-
-.song-selector {
-	display: none;
-}
 .main-content {
 	height: 100%;
 	width: 100%;
@@ -273,4 +241,25 @@ ul {
 
 a:focus, a:hover {
     text-decoration: none;
+}
+
+.song {
+	width: 45%;
+}
+
+.artist {
+	width: 40%;
+}
+
+.downvote, .upvote, .voteCount {
+	width: 5%;
+	color: #fff;
+}
+
+.upvote.active-vote {
+	color: #1db954;
+}
+
+.downvote.active-vote {
+	color: #f44b42;
 }
