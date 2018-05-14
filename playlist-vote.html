@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-ng-app="spotifyApp">
 <head>
+	<meta charset="utf-8"/>
 	<title>Spotify Jukebox</title>
+	<!--Bootstrap-->
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -14,6 +18,27 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="js/spotifyJS.js"></script>
 	<link href="css/style.css" rel="stylesheet">
+
+	<script>
+		var app = angular.module("spotifyApp", []);
+		app.controller("getPlaylist",
+			function ($scope, $http) {
+				$http.get('tracks.json')
+					.then(function (response) {
+							$scope.tracks = response.data.tracks;
+						}
+					);
+			});
+
+		app.controller("getSearch",
+			function ($scope, $http) {
+				$http.get('search.json')
+					.then(function (response) {
+							$scope.songs = response.data.songs;
+						}
+					);
+			});
+	</script>
 </head>
 <body>
 
@@ -27,139 +52,71 @@
 					<div class="col-xs-10 searchbar section">
 						<form class="navbar-form" role="search">
 							<div class="input-group add-on">
-								<!-- <div class="input-group-btn">
-									<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-								</div> -->
-								<input class="form-control" placeholder="Search..." name="srch-term" id="srch-term" type="text">
+								<input class="form-control" placeholder="Search..." name="search.song" id="search.song" data-ng-model="search.song" type="text"/>
 							</div>
 						</form>
 					</div>
 				</div>
-				<div class="row content-row">
-					<div class="col-xs-12 main-frame">
-						<!-- <iframe src="vote.html" class="main-content"></iframe> -->
-						<section class="cols-xs-12 playlist-content vote-selector section">
-							<h1 class="content-header">Party Playlist</h1>
-							<table id="vote-table" class="choice-list vote-list">
+				<div class="row results-row display-hide">
+					<div class="col-xs-2">
+					</div>
+					<div class="col-xs-10 search-results">
+						<div class="table-responsive" data-ng-controller="getSearch">	
+							<table id="search-table" class="table search-list">
 								<tbody>
-									<tr class='song-select'>
-										<td class="song">Humble</td>
-										<td class="artist">Kendrick Lamar</td>
-										<td class="upvote">
-											<i class="fas fa-arrow-up"></i>
-										</td>
-										<td class="voteCount">4</td>
-										<td class="downvote">
-											<i class="fas fa-arrow-down"></i>
-										</td>
-									</tr>
-									<tr class='song-select'>
-										<td class="song">Let Me Down Easy</td>
-										<td class="artist">Gang of Youths</td>
-										<td class="upvote">
-											<i class="fas fa-arrow-up"></i>
-										</td>
-										<td class="voteCount">3</td>
-										<td class="downvote">
-											<i class="fas fa-arrow-down"></i>
-										</td>
-									</tr>
-									<tr class='song-select'>
-										<td class="song">Chateau</td>
-										<td class="artist">Angus &amp; Julia Stone</td>
-										<td class="upvote">
-											<i class="fas fa-arrow-up"></i>
-										</td>
-										<td class="voteCount">3</td>
-										<td class="downvote">
-											<i class="fas fa-arrow-down"></i>
-										</td>
-									</tr>
-									<tr class='song-select'>
-										<td class="song">Green Light</td>
-										<td class="artist">Lorde</td>
-										<td class="upvote">
-											<i class="fas fa-arrow-up"></i>
-										</td>
-										<td class="voteCount">2</td>
-										<td class="downvote">
-											<i class="fas fa-arrow-down"></i>
-										</td>
-									</tr>
-									<tr class='song-select'>
-										<td class="song">Go Bang</td>
-										<td class="artist">PNAU</td>
-										<td class="upvote">
-											<i class="fas fa-arrow-up"></i>
-										</td>
-										<td class="voteCount">2</td>
-										<td class="downvote">
-											<i class="fas fa-arrow-down"></i>
-										</td>
-									</tr>
-									<tr class='song-select'>
-										<td class="song">Lay It On Me</td>
-										<td class="artist">Vance Joy</td>
-										<td class="upvote">
-											<i class="fas fa-arrow-up"></i>
-										</td>
-										<td class="voteCount">1</td>
-										<td class="downvote">
-											<i class="fas fa-arrow-down"></i>
-										</td>
-									</tr>
-									<tr class='song-select'>
-										<td class="song">Young, Dumb &amp; Broke</td>
-										<td class="artist">Khalid</td>
-										<td class="upvote">
-											<i class="fas fa-arrow-up"></i>
-										</td>
-										<td class="voteCount">1</td>
-										<td class="downvote">
-											<i class="fas fa-arrow-down"></i>
-										</td>
+									<tr data-ng-repeat="s in songs | filter: search.song">
+										<td>{{s.title}}</td>
+										<td>{{s.artist}}</td>
+										<td><i class="fas fa-plus"></i></td>
 									</tr>
 								</tbody>
 							</table>
+						</div>
+					</div>
+				</div>
+				<div class="row content-row">
+					<div class="col-xs-12 main-frame">
+						<section class="cols-xs-12 playlist-content vote-selector section">
+							<h1 class="content-header">Party Playlist</h1>
+
+							<div class="table-responsive" data-ng-controller="getPlaylist">	
+								<table id="vote-table" class="table choice-list vote-list">
+									<thead>
+										<tr>
+											<th>Track</th>
+											<th>Artist</th>
+											<th></th>
+											<th class="voteHeader">Vote</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-ng-repeat="x in tracks | orderBy : '-vote'">
+											<td>{{x.track}}</td>
+											<td>{{x.artist}}</td>
+											<td class="upvote">
+												<i class="fas fa-arrow-up"></i>
+											</td>
+											<td class="voteContent">{{x.vote}}</td>
+											<td class="downvote">
+												<i class="fas fa-arrow-down"></i>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</section>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- <div class="row">
-			<div class="col-xs-12 section current-music">
-				<div class="row current-row">
-					<div class="col-xs-6 artwork">
-						<i class="fas fa-music"></i>
-					</div>
-					<div class="col-xs-6 current-info">
-						<div class="row">
-							<div class="col-xs-12">
-								Current Song<br />
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								Current Artist
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row progress-row">
-					<div class="col-xs-1"></div>
-					<div class="col-xs-10 total-progress-bar">
-						<div class="music-progress"></div>
-					</div>
-					<div class="col-xs-1"></div>
-				</div>	
-			</div>
-		</div> -->
 	</div>
-
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="js/bootstrap.min.js"></script>
+	<!--Controller-->
+	<!-- <script src="js/voteController.js"></script> -->
 </body>
 </html>

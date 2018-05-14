@@ -1,0 +1,38 @@
+{
+	"tracks": [
+		{
+			"track": "Humble", 
+			"artist": "Kendrick Lamar", 
+			"vote": 5
+		},
+		{
+			"track": "Let Me Down Easy", 
+			"artist": "Gang of Youths", 
+			"vote": 7
+		},
+		{
+			"track": "Chateau", 
+			"artist": "Angus & Julia Stone", 
+			"vote": 5
+		},
+		{
+			"track": "Green Light", 
+			"artist": "Lorde", 
+			"vote": 5
+		},
+		{
+			"track": "Go Bang", 
+			"artist": "PNAU", 
+			"vote": 5
+		},
+		{
+			"track": "Lay It On Me", 
+			"artist": "Vance Joy", 
+			"vote": 5
+		},
+		{
+			"track": "Young, Dumb & Broke", 
+			"artist": "Khalid", 
+			"vote": 5
+		}
+]}
